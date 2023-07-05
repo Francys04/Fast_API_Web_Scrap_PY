@@ -39,5 +39,5 @@ def create_events_dict() -> Dict:
 # add all information from date_range in json file
 if __name__ == "__main__":
     events = create_events_dict()
-    with open("ecvents.json", mode='w', encoding="utf-8") as events_file:
+    with open("events.json", mode='w', encoding="utf-8") as events_file:
         js.dump(events, events_file, ensure_ascii=False)
