@@ -1,3 +1,5 @@
 import requests as _request
-import bs4 as _bs4
+from bs4 import BeautifulSoup as _bs4
+
+def generate_url(month)
 
