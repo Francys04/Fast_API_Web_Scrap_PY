@@ -5,19 +5,19 @@ import scraper as _scrape
 
 import json as js
 
-# def range of date for collect data 
+"""def range of date for collect data""" 
 def date_range(start_date: dt.date, end_date: dt.date) -> Iterator[dt.date]:
     for n in range(int((end_date - start_date).days)):
         yield start_date + dt.timedelta(n)
         
         
-    #define events from html inspect web site fro key search class  
+"""define events from html inspect web site fro key search class"""  
 def create_events_dict() -> Dict:
     events = dict()
     start_date = dt.date(2023, 3, 4)
     end_date = dt.date(2023, 5, 15)
     
-    
+    """simple example how it works """
     # {
     #     "april" :{
     #         "1" : "some event",
@@ -25,18 +25,18 @@ def create_events_dict() -> Dict:
     #     },
     #     "may" : "..."
     # }
-    
+
+    """Generate a dictionary of events for a range of dates. The function iterates through each date in the specified date range, 
+    gets the month and day from the date, and then populates a nested dictionary (events) with the events of each day in the month."""
     for date in date_range(start_date, end_date):
         month = date.strftime("%B").lower()
         if month not in events:
             events[month] = dict()
 
-
         events[month][date.day] = _scrape.events_of_the_day(month, date.day)
-    
     return events
 
-# add all information from date_range in json file
+"""add all information from date_range in json file"""
 if __name__ == "__main__":
     events = create_events_dict()
     with open("events.json", mode='w', encoding="utf-8") as events_file:

@@ -1,8 +1,11 @@
+"""allowing to add annotations to function parameters and return values to indicate the expected types of data."""
 from typing import List
+"""The requests library is a popular Python library used to make HTTP requests to web servers and interact with APIs."""
 import requests as _request
+"""Python library used for web scraping and parsing HTML and XML documents."""
 from bs4 import BeautifulSoup as _bs4
 
-# choose url abd acces function of url adress
+"""Choose url abd acces function of url adress"""
 def generate_url(month: str, day : int ) -> str:
     url = f"https://www.onthisday.com/day/{month}/{day}"
     return url
@@ -23,7 +26,8 @@ def events_of_the_day(month: str, day: int) -> List[str]:
     events = [event.text for event in raw_events]
     # print(events)
     return events
-    
+
+"""enter a date for execute extract data api """
 events_of_the_day("february", 24)
     
 
